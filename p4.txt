@@ -1,0 +1,57 @@
+CREATE TABLE Emp_Info(
+emp_id INT,
+emp_name VARCHAR(10),
+dept_id INT,
+emp_salary int
+);
+
+INSERT INTO Emp_Info VALUES(10,'susmit',90,2000);
+INSERT INTO Emp_Info VALUES(11,'manish',91,3000);
+INSERT INTO Emp_Info VALUES(12,'rounak',92,4000);
+INSERT INTO Emp_Info VALUES(13,'shounak',93,5000);
+INSERT INTO Emp_Info VALUES(14,'kanak',94,6000);
+INSERT INTO Emp_Info VALUES(15,'aditya',95,7000);
+INSERT INTO Emp_Info VALUES(16,'clint',91,8000);
+INSERT INTO Emp_Info VALUES(17,'victor',92,9000);
+INSERT INTO Emp_Info VALUES(18,'manish',93,8500);
+INSERT INTO Emp_Info VALUES(19,'rounak',94,7500);
+
+SELECT * FROM Emp_Info ORDER BY emp_salary;
+
+SELECT SUM(emp_salary) FROM Emp_Info;
+SELECT AVG(emp_salary) FROM Emp_Info;
+SELECT MAX(emp_salary) FROM Emp_Info;
+SELECT MIN(emp_salary) FROM Emp_Info;
+SELECT COUNT(emp_salary) FROM Emp_Info;
+
+SELECT lower("HELLO") FROM dual;
+SELECT upper("HELLO") FROM dual;
+SELECT initcap('hello') FROM dual;
+SELECT CONCAT('Hello', 'World') FROM dual;
+SELECT CONCAT('Hello', 'World') AS CONCAT FROM dual;
+SELECT substr('Hello',1,2) AS OP FROM dual;
+SELECT length('Hello') AS OP FROM dual;
+SELECT lpad('Hello', 10, '#') AS OP FROM dual;
+SELECT rpad('Hello', 10, '#') AS OP FROM dual;
+SELECT trim('R' from 'RRRHKJFRBBRR') AS OP FROM dual;
+
+SELECT round(45.985) AS OP FROM dual;
+SELECT round(45.985,2) AS OP FROM dual;
+
+SELECT trunc(45.985) AS OP FROM dual;
+SELECT round(45.985,2) AS OP FROM dual;
+
+SELECT ceil(4.91) AS OP FROM dual;
+SELECT ceil(4.2) AS OP FROM dual;
+
+SELECT floor(3.2) AS OP FROM dual;
+SELECT floor(3.99) AS OP FROM dual;
+
+SELECT abs(-2.9) AS OP FROM dual;
+
+
+
+
+
+
+
