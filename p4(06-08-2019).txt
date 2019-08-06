@@ -1,0 +1,698 @@
+SQL> create table PRODUCT
+  2  (
+  3  p_id int,
+  4  v_id varchar(10),
+  5  p_name varchar(25),
+  6  p_price int
+  7  );
+
+Table created.
+
+SQL> create table VENDOR
+  2  (
+  3  v_id varchar(10),
+  4  v_name varchar(25),
+  5  v_city varchar(20)
+  6  );
+
+Table created.
+
+SQL> alter table PRODUCT modify p_price float;
+
+Table altered.
+
+SQL> desc PRODUCT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ P_ID                                               NUMBER(38)
+ V_ID                                               VARCHAR2(10)
+ P_NAME                                             VARCHAR2(25)
+ P_PRICE                                            FLOAT(126)
+
+SQL> desc VENDOR;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ V_ID                                               VARCHAR2(10)
+ V_NAME                                             VARCHAR2(25)
+ V_CITY                                             VARCHAR2(20)
+
+SQL> insert into PRODUCT values(100,"A-101","Chair",503.75);
+insert into PRODUCT values(100,"A-101","Chair",503.75)
+                                       *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into PRODUCT values(101,"B-101","Table",2519.75);
+insert into PRODUCT values(101,"B-101","Table",2519.75)
+                                       *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into PRODUCT values(102,"C-101","Watch",700.10);
+insert into PRODUCT values(102,"C-101","Watch",700.10)
+                                       *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into PRODUCT values(103,"D-101","Mobile",1504.25);
+insert into PRODUCT values(103,"D-101","Mobile",1504.25)
+                                       *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into PRODUCT values(104,"E-101","Sofa",50000.00);
+insert into PRODUCT values(104,"E-101","Sofa",50000.00)
+                                       *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into PRODUCT values(100,'A-101','Chair',503.75);
+
+1 row created.
+
+SQL> insert into PRODUCT values(101,'B-101','Table',2519.75);
+
+1 row created.
+
+SQL> insert into PRODUCT values(102,'C-101','Watch',700.10);
+
+1 row created.
+
+SQL> insert into PRODUCT values(103,'D-101','Mobile',1504.25);
+
+1 row created.
+
+SQL> insert into PRODUCT values(104,'E-101','Sofa',50000.00);
+
+1 row created.
+
+SQL> select * from PRODUCT;
+
+      P_ID V_ID       P_NAME                       P_PRICE
+---------- ---------- ------------------------- ----------
+       100 A-101      Chair                         503.75
+       101 B-101      Table                        2519.75
+       102 C-101      Watch                          700.1
+       103 D-101      Mobile                       1504.25
+       104 E-101      Sofa                           50000
+
+SQL> insert into VENDOR values('A-101','John','Mumbai');
+
+1 row created.
+
+SQL> insert into VENDOR values('F-101','Seth','Kolkata');
+
+1 row created.
+
+SQL> insert into VENDOR values('C-101','Dean','Chennai');
+
+1 row created.
+
+SQL> insert into VENDOR values('G-101','Roman','New Delhi');
+
+1 row created.
+
+SQL> insert into VENDOR values('E-101','Albert','Hyderabad');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> select * from VENDOR
+  2  ;
+
+V_ID       V_NAME                    V_CITY
+---------- ------------------------- --------------------
+A-101      John                      Mumbai
+F-101      Seth                      Kolkata
+C-101      Dean                      Chennai
+G-101      Roman                     New Delhi
+E-101      Albert                    Hyderabad
+
+SQL> select * from PRODUCT,VENDOR;
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       100 A-101      Chair                         503.75 A-101
+John                      Mumbai
+
+       101 B-101      Table                        2519.75 A-101
+John                      Mumbai
+
+       102 C-101      Watch                          700.1 A-101
+John                      Mumbai
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       103 D-101      Mobile                       1504.25 A-101
+John                      Mumbai
+
+       104 E-101      Sofa                           50000 A-101
+John                      Mumbai
+
+       100 A-101      Chair                         503.75 F-101
+Seth                      Kolkata
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       101 B-101      Table                        2519.75 F-101
+Seth                      Kolkata
+
+       102 C-101      Watch                          700.1 F-101
+Seth                      Kolkata
+
+       103 D-101      Mobile                       1504.25 F-101
+Seth                      Kolkata
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       104 E-101      Sofa                           50000 F-101
+Seth                      Kolkata
+
+       100 A-101      Chair                         503.75 C-101
+Dean                      Chennai
+
+       101 B-101      Table                        2519.75 C-101
+Dean                      Chennai
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       102 C-101      Watch                          700.1 C-101
+Dean                      Chennai
+
+       103 D-101      Mobile                       1504.25 C-101
+Dean                      Chennai
+
+       104 E-101      Sofa                           50000 C-101
+Dean                      Chennai
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       100 A-101      Chair                         503.75 G-101
+Roman                     New Delhi
+
+       101 B-101      Table                        2519.75 G-101
+Roman                     New Delhi
+
+       102 C-101      Watch                          700.1 G-101
+Roman                     New Delhi
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       103 D-101      Mobile                       1504.25 G-101
+Roman                     New Delhi
+
+       104 E-101      Sofa                           50000 G-101
+Roman                     New Delhi
+
+       100 A-101      Chair                         503.75 E-101
+Albert                    Hyderabad
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       101 B-101      Table                        2519.75 E-101
+Albert                    Hyderabad
+
+       102 C-101      Watch                          700.1 E-101
+Albert                    Hyderabad
+
+       103 D-101      Mobile                       1504.25 E-101
+Albert                    Hyderabad
+
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID
+---------- ---------- ------------------------- ---------- ----------
+V_NAME                    V_CITY
+------------------------- --------------------
+       104 E-101      Sofa                           50000 E-101
+Albert                    Hyderabad
+
+
+25 rows selected.
+
+SQL> set lines 256;
+SQL> select * from PRODUCT, VENDOR;
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID       V_NAME                    V_CITY
+---------- ---------- ------------------------- ---------- ---------- ------------------------- ----
+       100 A-101      Chair                         503.75 A-101      John                      Mumbai
+       101 B-101      Table                        2519.75 A-101      John                      Mumbai
+       102 C-101      Watch                          700.1 A-101      John                      Mumbai
+       103 D-101      Mobile                       1504.25 A-101      John                      Mumbai
+       104 E-101      Sofa                           50000 A-101      John                      Mumbai
+       100 A-101      Chair                         503.75 F-101      Seth                      Kolkata
+       101 B-101      Table                        2519.75 F-101      Seth                      Kolkata
+       102 C-101      Watch                          700.1 F-101      Seth                      Kolkata
+       103 D-101      Mobile                       1504.25 F-101      Seth                      Kolkata
+       104 E-101      Sofa                           50000 F-101      Seth                      Kolkata
+       100 A-101      Chair                         503.75 C-101      Dean                      Chennai
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID       V_NAME                    V_CITY
+---------- ---------- ------------------------- ---------- ---------- ------------------------- ----
+       101 B-101      Table                        2519.75 C-101      Dean                      Chennai
+       102 C-101      Watch                          700.1 C-101      Dean                      Chennai
+       103 D-101      Mobile                       1504.25 C-101      Dean                      Chennai
+       104 E-101      Sofa                           50000 C-101      Dean                      Chennai
+       100 A-101      Chair                         503.75 G-101      Roman                     New Delhi
+       101 B-101      Table                        2519.75 G-101      Roman                     New Delhi
+       102 C-101      Watch                          700.1 G-101      Roman                     New Delhi
+       103 D-101      Mobile                       1504.25 G-101      Roman                     New Delhi
+       104 E-101      Sofa                           50000 G-101      Roman                     New Delhi
+       100 A-101      Chair                         503.75 E-101      Albert                    Hyderabad
+       101 B-101      Table                        2519.75 E-101      Albert                    Hyderabad
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID       V_NAME                    V_CITY
+---------- ---------- ------------------------- ---------- ---------- ------------------------- ----
+       102 C-101      Watch                          700.1 E-101      Albert                    Hyderabad
+       103 D-101      Mobile                       1504.25 E-101      Albert                    Hyderabad
+       104 E-101      Sofa                           50000 E-101      Albert                    Hyderabad
+
+25 rows selected.
+
+SQL> select p_id, p_name, v_city from PRODUCT, VENDOR;
+
+      P_ID P_NAME                    V_CITY
+---------- ------------------------- --------------------
+       100 Chair                     Mumbai
+       101 Table                     Mumbai
+       102 Watch                     Mumbai
+       103 Mobile                    Mumbai
+       104 Sofa                      Mumbai
+       100 Chair                     Kolkata
+       101 Table                     Kolkata
+       102 Watch                     Kolkata
+       103 Mobile                    Kolkata
+       104 Sofa                      Kolkata
+       100 Chair                     Chennai
+
+      P_ID P_NAME                    V_CITY
+---------- ------------------------- --------------------
+       101 Table                     Chennai
+       102 Watch                     Chennai
+       103 Mobile                    Chennai
+       104 Sofa                      Chennai
+       100 Chair                     New Delhi
+       101 Table                     New Delhi
+       102 Watch                     New Delhi
+       103 Mobile                    New Delhi
+       104 Sofa                      New Delhi
+       100 Chair                     Hyderabad
+       101 Table                     Hyderabad
+
+      P_ID P_NAME                    V_CITY
+---------- ------------------------- --------------------
+       102 Watch                     Hyderabad
+       103 Mobile                    Hyderabad
+       104 Sofa                      Hyderabad
+
+25 rows selected.
+
+SQL> select p_price, p_name from PRODUCT, VENDOR;
+
+   P_PRICE P_NAME
+---------- -------------------------
+    503.75 Chair
+   2519.75 Table
+     700.1 Watch
+   1504.25 Mobile
+     50000 Sofa
+    503.75 Chair
+   2519.75 Table
+     700.1 Watch
+   1504.25 Mobile
+     50000 Sofa
+    503.75 Chair
+
+   P_PRICE P_NAME
+---------- -------------------------
+   2519.75 Table
+     700.1 Watch
+   1504.25 Mobile
+     50000 Sofa
+    503.75 Chair
+   2519.75 Table
+     700.1 Watch
+   1504.25 Mobile
+     50000 Sofa
+    503.75 Chair
+   2519.75 Table
+
+   P_PRICE P_NAME
+---------- -------------------------
+     700.1 Watch
+   1504.25 Mobile
+     50000 Sofa
+
+25 rows selected.
+
+SQL> select p_price,p_name from PRODUCT;
+
+   P_PRICE P_NAME
+---------- -------------------------
+    503.75 Chair
+   2519.75 Table
+     700.1 Watch
+   1504.25 Mobile
+     50000 Sofa
+
+SQL> select p_id,p_name,v_namefrom PRODUCT,VENDOR where city='Mumbai';
+select p_id,p_name,v_namefrom PRODUCT,VENDOR where city='Mumbai'
+                                             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> 
+
+SQL> 
+
+SQL> 
+SQL> _id,p_name,v_name from PRODUCT,VENDOR where city='Mumbai';
+SP2-0734: unknown command beginning "_id,p_name..." - rest of line ignored.
+SQL> p_id,p_name,v_name from PRODUCT,VENDOR where city='Mumbai';
+SP2-0734: unknown command beginning "p_id,p_nam..." - rest of line ignored.
+SQL> select p_name from PRODUCT,VENDOR where v_city='Hyderabad';
+
+P_NAME
+-------------------------
+Chair
+Table
+Watch
+Mobile
+Sofa
+
+SQL> p_id,v_name,p_name, from PRODUCT,VENDOR where city='Mumbai';
+SP2-0734: unknown command beginning "p_id,v_nam..." - rest of line ignored.
+SQL> select p_id,v_name,p_name, from PRODUCT,VENDOR where city='Mumbai';
+select p_id,v_name,p_name, from PRODUCT,VENDOR where city='Mumbai'
+                           *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> 
+SQL> elect p_id,v_name,p_name from PRODUCT,VENDOR where city='Mumbai';
+SP2-0734: unknown command beginning "elect p_id..." - rest of line ignored.
+SQL> select p_id,v_name,p_name from PRODUCT,VENDOR where city='Mumbai';
+select p_id,v_name,p_name from PRODUCT,VENDOR where city='Mumbai'
+                                                    *
+ERROR at line 1:
+ORA-00904: "CITY": invalid identifier
+
+
+SQL> 
+
+SQL> select p_id,v_name,p_name from PRODUCT,VENDOR where v_city='Mumbai';
+
+      P_ID V_NAME                    P_NAME
+---------- ------------------------- -------------------------
+       100 John                      Chair
+       101 John                      Table
+       102 John                      Watch
+       103 John                      Mobile
+       104 John                      Sofa
+
+SQL> select p_id,p_name,v_name from PRODUCT,VENDOR where v_city='Mumbai';
+
+      P_ID P_NAME                    V_NAME
+---------- ------------------------- -------------------------
+       100 Chair                     John
+       101 Table                     John
+       102 Watch                     John
+       103 Mobile                    John
+       104 Sofa                      John
+
+SQL> select v_id,p_name,v_name from PRODUCT,VENDOR where v_city='Mumbai';
+select v_id,p_name,v_name from PRODUCT,VENDOR where v_city='Mumbai'
+       *
+ERROR at line 1:
+ORA-00918: column ambiguously defined
+
+
+SQL> select PRODUCT.v_id,p_name,v_name from PRODUCT,VENDOR where v_city='Mumbai';
+
+V_ID       P_NAME                    V_NAME
+---------- ------------------------- -------------------------
+A-101      Chair                     John
+B-101      Table                     John
+C-101      Watch                     John
+D-101      Mobile                    John
+E-101      Sofa                      John
+
+SQL> select v_id,p_name,v_name from PRODUCT p,VENDOR where v_city='Mumbai';
+select v_id,p_name,v_name from PRODUCT p,VENDOR where v_city='Mumbai'
+       *
+ERROR at line 1:
+ORA-00918: column ambiguously defined
+
+
+SQL> select p.v_id,p_name,v_name from PRODUCT p,VENDOR where v_city='Mumbai';
+
+V_ID       P_NAME                    V_NAME
+---------- ------------------------- -------------------------
+A-101      Chair                     John
+B-101      Table                     John
+C-101      Watch                     John
+D-101      Mobile                    John
+E-101      Sofa                      John
+
+SQL> select * from PRODUCT p inner join VENDOR v where p.v_id=v.v_id;
+select * from PRODUCT p inner join VENDOR v where p.v_id=v.v_id
+                                            *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> 
+
+SQL> select * from PRODUCT p inner_join VENDOR v where p.v_id=v.v_id;
+select * from PRODUCT p inner_join VENDOR v where p.v_id=v.v_id
+                        *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from PRODUCT p inner join VENDOR v where p.v_id=v.v_id;
+select * from PRODUCT p inner join VENDOR v where p.v_id=v.v_id
+                                            *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> select * from PRODUCT p inner join VENDOR v on p.v_id=v.v_id;
+
+      P_ID V_ID       P_NAME                       P_PRICE V_ID       V_NAME                    V_CITY
+---------- ---------- ------------------------- ---------- ---------- ------------------------- ----
+       100 A-101      Chair                         503.75 A-101      John                      Mumbai
+       102 C-101      Watch                          700.1 C-101      Dean                      Chennai
+       104 E-101      Sofa                           50000 E-101      Albert                    Hyderabad
+
+SQL> select sysdate from dual;
+
+SYSDATE
+---------
+06-AUG-19
+
+SQL> select to_char(sysdate,'dd-mon-yyyy hh:mi:ss') from dual;
+
+TO_CHAR(SYSDATE,'DD-
+--------------------
+06-aug-2019 09:35:34
+
+SQL> 
+
+SQL>  select to_char(sysdate,'dd-mon-yyyy hh:mi:ss') as Timestamp from dual;
+
+TIMESTAMP
+--------------------
+06-aug-2019 09:38:28
+
+SQL>  select to_char(sysdate,'Month' 'Day') as Timestamp from dual;
+ select to_char(sysdate,'Month' 'Day') as Timestamp from dual
+                                *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'RM' 'DY') as Timestamp from dual;
+ select to_char(sysdate,'RM' 'DY') as Timestamp from dual
+                             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'WW' 'HH') as Timestamp from dual;
+ select to_char(sysdate,'WW' 'HH') as Timestamp from dual
+                             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'W' 'HH12') as Timestamp from dual;
+ select to_char(sysdate,'W' 'HH12') as Timestamp from dual
+                            *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'D' 'HH24') as Timestamp from dual;
+ select to_char(sysdate,'D' 'HH24') as Timestamp from dual
+                            *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'DD' 'MI') as Timestamp from dual;
+ select to_char(sysdate,'DD' 'MI') as Timestamp from dual
+                             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'DDD' 'SS') as Timestamp from dual;
+ select to_char(sysdate,'DDD' 'SS') as Timestamp from dual
+                              *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'DDD' 'SSSS') as Timestamp from dual;
+ select to_char(sysdate,'DDD' 'SSSS') as Timestamp from dual
+                              *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL>  select to_char(sysdate,'Month') as Timestamp from dual;
+
+TIMESTAMP
+---------
+August
+
+SQL>  select to_char(sysdate,'RM') as Timestamp from dual;
+
+TIME
+----
+VIII
+
+SQL>  select to_char(sysdate,'WW') as Timestamp from dual;
+
+TI
+--
+32
+
+SQL>  select to_char(sysdate,'W') as Timestamp from dual;
+
+T
+-
+1
+
+SQL>  select to_char(sysdate,'D') as Timestamp from dual;
+
+T
+-
+3
+
+SQL>  select to_char(sysdate,'DD') as Timestamp from dual;
+
+TI
+--
+06
+
+SQL>  select to_char(sysdate,'DDD') as Timestamp from dual;
+
+TIM
+---
+218
+
+SQL>  select to_char(sysdate,'DDD') as Timestamp from dual;
+
+TIM
+---
+218
+
+SQL>  select to_char(sysdate,'Day') as Timestamp from dual;
+
+TIMESTAMP
+---------
+Tuesday
+
+SQL>  select to_char(sysdate,'DY') as Timestamp from dual;
+
+TIM
+---
+TUE
+
+SQL>  select to_char(sysdate,'HH') as Timestamp from dual;
+
+TI
+--
+09
+
+SQL>  select to_char(sysdate,'HH12') as Timestamp from dual;
+
+TI
+--
+09
+
+SQL>  select to_char(sysdate,'HH24') as Timestamp from dual;
+
+TI
+--
+09
+
+SQL>  select to_char(sysdate,'MI') as Timestamp from dual;
+
+TI
+--
+50
+
+SQL>  select to_char(sysdate,'SS') as Timestamp from dual;
+
+TI
+--
+10
+
+SQL>  select to_char(sysdate,'SSSS') as Timestamp from dual;
+
+TIME
+----
+1212
+
+SQL> drop table PRODUCT;
+
+Table dropped.
+
+SQL> drop table VENDOR;
+
+Table dropped.
+
+SQL> 
