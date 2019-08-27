@@ -13,5 +13,77 @@ sum of p and q := 30
 Meeting is on 10-NOV-11
 
 
+24 is less than 34
+
+
+PASS
+
+
+you got first class
+
+
+
+a:1
+b:2
+a:2
+b:3
+a:3
+b:4
+a:4
+b:5
+a:5
+
+
+Table of 19 :19
+Table of 19 :38
+Table of 19 :57
+Table of 19 :76
+Table of 19 :95
+Table of 19 :114
+Table of 19 :133
+Table of 19 :152
+Table of 19 :171
+Table of 19 :190
+
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+Square of entered number is 16
+
+
+SUM IS: 52
+
+
+
+TEXT
+--------------------------------------------
+PROCEDURE DEMO AS
+BEGIN
+ DBMS_OUTPUT.PUT_LINE('HELLO WORLD');
+ END;
+
+
+OBJECT_NAME
+------------------
+DEMO
+DOUBLEN
+SQUARE
+SQUARE1
+SUM_AB
+
+
+
+RESULT IS: 75
+
+
+
 
 
