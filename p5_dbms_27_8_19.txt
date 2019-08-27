@@ -1,0 +1,71 @@
+SQL> create sequence seq1
+  2  increment by 2
+  3  start with 10
+  4  minvalue 1
+  5  maxvalue 999
+  6  cycle
+  7  cache 20
+  8  order;
+
+Sequence created.
+
+SQL> CREATE TABLE Locations(loc_id int, country_id int);
+
+Table created.
+
+// seq1.currval
+
+SQL> INSERT INTO Locations VALUES(seq1.nextval,100);
+
+1 row created.
+
+SQL> INSERT INTO Locations VALUES(seq1.nextval,101);
+
+1 row created.
+
+SQL> SELECT * FROM Locations;
+
+    LOC_ID COUNTRY_ID
+---------- ----------
+        10        100
+        12        101
+
+SQL> SELECT * FROM Locations;
+
+    LOC_ID COUNTRY_ID
+---------- ----------
+        10        100
+        12        101
+
+SQL> CREATE VIEW v1 AS
+  2  SELECT loc_id
+  3  FROM Locations;
+
+View created.
+
+SQL> SELECT * FROM v1;
+
+    LOC_ID
+----------
+        10
+        12
+
+SQL> UPDATE v1
+  2  SET loc_id = 6
+  3  where loc_id = 10;
+
+1 row updated.
+
+SQL> SELECT * FROM v1;
+
+    LOC_ID
+----------
+         6
+        12
+
+SQL> DROP view v1;
+
+View dropped.
+
+
+
