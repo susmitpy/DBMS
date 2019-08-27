@@ -1,0 +1,17 @@
+SQL> BEGIN
+  2  dbms_output.put_line('Hello');
+  3  END;
+  4  /
+Hello
+
+
+sum := 30
+average := 15
+
+sum of x and y := 30
+sum of p and q := 30
+Meeting is on 10-NOV-11
+
+
+
+
