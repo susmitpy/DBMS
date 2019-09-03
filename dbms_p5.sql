@@ -89,10 +89,10 @@ SQL> CREATE TABLE cust
 Table created.
 
 INSERT INTO emp VALUES(1,'susmit','mumbai',100);
-INSERT INTO emp VALUES(1,'rounak','pune',200);
-INSERT INTO emp VALUES(1,'manish','satara',300);
-INSERT INTO emp VALUES(1,'clint','mumbai',400);
-INSERT INTO emp VALUES(1,'pranit','pune',500);
+INSERT INTO emp VALUES(2,'rounak','pune',200);
+INSERT INTO emp VALUES(3,'manish','satara',300);
+INSERT INTO emp VALUES(4,'clint','mumbai',400);
+INSERT INTO emp VALUES(5,'pranit','pune',500);
 
 INSERT INTO cust VALUES(10,'rahul','mumbai',1);
 INSERT INTO cust VALUES(11,'shounak','pune',2);
