@@ -37,28 +37,6 @@ MINVALUE minimum value
 MAXVALUE maximum value
 CYCLE|NOCYCLE ;
 
-sequence_name: Name of the sequence.
-
-initial_value: starting value from where the sequence starts. 
-Initial_value should be greater than or equal 
-to minimum value and less than equal to maximum value.
-
-increment_value: Value by which sequence will increment itself. 
-Increment_value can be positive or negative.
-
-minimum_value: Minimum value of the sequence.
-maximum_value: Maximum value of the sequence.
-
-cycle: When sequence reaches its set_limit 
-it starts from beginning.
-
-nocycle: An exception will be thrown 
-if sequence exceeds its max_value.
-
-
-
-
-
 SQL> create sequence seq1
   2  increment by 2
   3  start with 10
